@@ -4,20 +4,18 @@ import (
 	"testing"
 )
 
-func checkBest3OutOf4(ints []int, strength int, t *testing.T) {
+func checkBest3OutOf4(t *testing.T, strength int, ints ...int) {
 	if best3OutOf4(ints) != strength {
 		t.Fail()
 	}
 }
 
 func TestFourOnesIsThree(t *testing.T) {
-	ints := []int{1, 1, 1, 1}
-	strength := 3
-	checkBest3OutOf4(ints, strength, t)
+	checkBest3OutOf4(t,3, 1, 1, 1, 1)
 }
 
 func TestFourSixesIsEighteen(t *testing.T) {
-	checkBest3OutOf4([]int{6,6,6,6}, 18, t)
+	checkBest3OutOf4(t, 18, 6,6,6,6)
 }
 
 func TestIgnoresLowestRoll(t *testing.T) {
