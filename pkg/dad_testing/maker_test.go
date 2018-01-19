@@ -34,19 +34,3 @@ func TestRandomToGetRolling(t *testing.T) {
 		t.Fail()
 	}
 }
-
-func TestFourOnesIsThree(t *testing.T) {
-	// Use this to prove that 4 1's yields a result of 3.
-}
-
-func TestFourSixesIsEighteen(t *testing.T) {
-	// Use this to prove that 4 6's yields a result of 18.
-}
-
-func TestIgnoresLowestRoll(t *testing.T) {
-	// try doing [1,6,6,6], [2,6,6,6],[3,6,6,6], etc., results always 18
-}
-
-func TestPositionOfMinDoesNotMatter(t *testing.T) {
-	// here, let's do [1,6,6,6], [6,1,6,6], [6,6,1,6], and [6,6,6,1]
-}
