@@ -19,10 +19,7 @@ type Maker struct {
 }
 
 func (maker *Maker) StrengthFrom(dice Dice) {
-	var rolls []int
-	for i := 0; i < 4; i++ {
-		rolls = append(rolls, dice.Roll())
-	}
+	rolls := dice.Rolls(4)
 
 	strength := best3OutOf4(rolls)
 
