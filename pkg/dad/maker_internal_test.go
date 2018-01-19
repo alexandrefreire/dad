@@ -11,7 +11,9 @@ func TestFourOnesIsThree(t *testing.T) {
 }
 
 func TestFourSixesIsEighteen(t *testing.T) {
-	// Use this to prove that 4 6's yields a result of 18.
+	if best3OutOf4([]int{6,6,6,6}) != 18 {
+		t.Fail()
+	}
 }
 
 func TestIgnoresLowestRoll(t *testing.T) {
