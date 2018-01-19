@@ -8,7 +8,11 @@ type Maker struct {
 	Character Character
 }
 
-func (maker *Maker) StrengthFrom(dice Dice) {
+type Roller interface{
+	Roll() int
+}
+
+func (maker *Maker) StrengthFrom(dice Roller) {
 	sum := 0
 	min := 6
 
