@@ -20,11 +20,14 @@ type Maker struct {
 
 func (maker *Maker) StrengthFrom(dice Dice) {
 	var rolls []int
+	for i := 0; i < 4; i++ {
+		rolls = append(rolls, dice.Roll())
+	}
+
 	sum := 0
 	min := 6
 
 	for i := 0; i < 4; i++ {
-		rolls = append(rolls, dice.Roll())
 		roll := rolls[i]
 		sum += roll
 		if min > roll {
