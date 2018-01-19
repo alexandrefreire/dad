@@ -35,5 +35,7 @@ func (maker *Maker) StrengthFrom(dice Dice) {
 		}
 	}
 
-	maker.Character = Character{sum - min}
+	strength := sum - min
+	
+	maker.Character = Character{strength}
 }
