@@ -30,22 +30,23 @@ func TestRandomToGetRolling(t *testing.T) {
 	maker := dad.Maker{}
 	maker.StrengthFrom(&dice)
 
-
 	if sumOfBestThree != maker.Character.Strength {
 		t.Fail()
 	}
 }
 
 type FakeDice struct {
+	rolls []int
+	i     int
 }
 
 func (fd *FakeDice) Roll() int {
-	return 1
+	defer func() {fd.i++}()
+	return fd.rolls[fd.i]
 }
 
 func TestFourOnesIsThree(t *testing.T) {
-	fd := FakeDice{}
-
+	fd := FakeDice{rolls: []int{1, 1, 1, 1}}
 	// Use this to prove that 4 1's yields a result of 3.
 	maker := dad.Maker{}
 	maker.StrengthFrom(&fd)
@@ -57,6 +58,13 @@ func TestFourOnesIsThree(t *testing.T) {
 
 func TestFourSixesIsEighteen(t *testing.T) {
 	// Use this to prove that 4 6's yields a result of 18.
+	fd := FakeDice{rolls: []int{6, 6, 6, 6}}
+	maker := dad.Maker{}
+	maker.StrengthFrom(&fd)
+
+	if 18 != maker.Character.Strength {
+		t.Fail()
+	}
 }
 
 func TestIgnoresLowestRoll(t *testing.T) {
