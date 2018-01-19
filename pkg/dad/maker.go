@@ -24,9 +24,14 @@ func (maker *Maker) StrengthFrom(dice Dice) {
 		rolls = append(rolls, dice.Roll())
 	}
 
+	strength := best3OutOf4(rolls)
+
+	maker.Character = Character{strength}
+}
+
+func best3OutOf4(rolls []int) int {
 	sum := 0
 	min := 6
-
 	for i := 0; i < 4; i++ {
 		roll := rolls[i]
 		sum += roll
@@ -34,8 +39,6 @@ func (maker *Maker) StrengthFrom(dice Dice) {
 			min = roll
 		}
 	}
-
 	strength := sum - min
-	
-	maker.Character = Character{strength}
+	return strength
 }
