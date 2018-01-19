@@ -72,5 +72,7 @@ func TestIgnoresLowestRoll(t *testing.T) {
 }
 
 func TestPositionOfMinDoesNotMatter(t *testing.T) {
-	// here, let's do [1,6,6,6], [6,1,6,6], [6,6,1,6], and [6,6,6,1]
+	checkMakerFor(t, 18, 6,1,6,6)
+	checkMakerFor(t, 18, 6,6,1,6)
+	checkMakerFor(t, 18, 6,6,6,1)
 }
