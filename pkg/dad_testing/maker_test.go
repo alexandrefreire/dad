@@ -45,27 +45,23 @@ func (fd *FakeDice) Roll() int {
 	return fd.rolls[fd.i]
 }
 
-func TestFourOnesIsThree(t *testing.T) {
-	fd := FakeDice{rolls: []int{1, 1, 1, 1}}
-	// Use this to prove that 4 1's yields a result of 3.
+func checkMakerFor(t *testing.T, result int, rs ...int) {
+	fd := FakeDice{rolls: rs}
 	maker := dad.Maker{}
 	maker.StrengthFrom(&fd)
-
-	if 3 != maker.Character.Strength {
+	if result != maker.Character.Strength {
 		t.Fail()
 	}
+}
+
+func TestFourOnesIsThree(t *testing.T) {
+	checkMakerFor(t, 3, 1,1,1,1)
 }
 
 func TestFourSixesIsEighteen(t *testing.T) {
-	// Use this to prove that 4 6's yields a result of 18.
-	fd := FakeDice{rolls: []int{6, 6, 6, 6}}
-	maker := dad.Maker{}
-	maker.StrengthFrom(&fd)
-
-	if 18 != maker.Character.Strength {
-		t.Fail()
-	}
+	checkMakerFor(t, 18, 6,6,6,6)
 }
+
 
 func TestIgnoresLowestRoll(t *testing.T) {
 	// try doing [1,6,6,6], [2,6,6,6],[3,6,6,6], etc., results always 18
