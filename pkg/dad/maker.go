@@ -8,7 +8,7 @@ type Maker struct {
 	Character Character
 }
 
-type Roller interface{
+type Roller interface {
 	Roll() int
 }
 
