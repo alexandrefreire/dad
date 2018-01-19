@@ -30,6 +30,7 @@ func TestRandomToGetRolling(t *testing.T) {
 	maker := dad.Maker{}
 	maker.StrengthFrom(dice)
 
+
 	if sumOfBestThree != maker.Character.Strength {
 		t.Fail()
 	}
