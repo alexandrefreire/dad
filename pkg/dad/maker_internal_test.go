@@ -19,9 +19,15 @@ func TestFourSixesIsEighteen(t *testing.T) {
 }
 
 func TestIgnoresLowestRoll(t *testing.T) {
-	// try doing [1,6,6,6], [2,6,6,6],[3,6,6,6], etc., results always 18
+	checkBest3OutOf4(t, 18, 1,6,6,6)
+	checkBest3OutOf4(t, 18, 2,6,6,6)
+	checkBest3OutOf4(t, 18, 3,6,6,6)
+	checkBest3OutOf4(t, 18, 4,6,6,6)
+	checkBest3OutOf4(t, 18, 5,6,6,6)
 }
 
 func TestPositionOfMinDoesNotMatter(t *testing.T) {
-	// here, let's do [1,6,6,6], [6,1,6,6], [6,6,1,6], and [6,6,6,1]
+	checkBest3OutOf4(t, 18, 6,1,6,6)
+	checkBest3OutOf4(t, 18, 6,6,1,6)
+	checkBest3OutOf4(t, 18, 6,6,6,1)
 }
